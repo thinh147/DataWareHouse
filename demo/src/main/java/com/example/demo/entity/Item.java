@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemId;
 
     @Column(name = "description")
@@ -29,10 +28,4 @@ public class Item {
 
     @Column(name = "start_sale_date")
     private Instant startSaleDate;
-
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    List<ItemStorage> itemStorages = new ArrayList<>();
-
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    List<OrderItem> orderItems = new ArrayList<>();
 }

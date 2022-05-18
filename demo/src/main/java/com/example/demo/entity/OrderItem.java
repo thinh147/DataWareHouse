@@ -8,16 +8,17 @@ import java.io.Serializable;
 @Entity
 @Table(name = "order_item")
 @Data
-public class OrderItem implements Serializable {
+public class OrderItem{
     @Id
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Orders.class)
-    @JoinColumn(name = "order_id")
-    private Orders orders;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
+    private Long id;
 
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Item.class)
-    @JoinColumn(name = "item_id")
-    private Item item;
+    @Column(name = "order_id")
+    private Long orderId;
+
+    @Column(name = "item_id")
+    private Long itemId;
 
     @Column(name = "order_quantity")
     private Integer quantity;

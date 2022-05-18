@@ -13,19 +13,15 @@ import java.util.List;
 @Data
 public class Store {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long storeId;
 
     @Column(name = "phone")
-    private Long phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "store_created_date")
     @CreatedDate
     private Instant storeCreatedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Office.class)
-    private Office office;
-
-    @OneToMany(mappedBy = "store", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<ItemStorage> itemStorage = new ArrayList<>();
+    @Column(name = "office_city_id")
+    private Long officeId;
 }

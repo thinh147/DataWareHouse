@@ -10,16 +10,17 @@ import java.time.Instant;
 @Entity
 @Table(name = "item_storage")
 @Data
-public class ItemStorage implements Serializable {
+public class ItemStorage{
     @Id
-    @ManyToOne(targetEntity = Item.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
-    private Item item;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "item_storage_id")
+    private Long id;
 
-    @Id
-    @ManyToOne(targetEntity = Store.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id")
-    private Store store;
+    @Column(name = "item_id")
+    private Long itemId;
+
+    @Column(name = "store_id")
+    private Long storeId;
 
     @Column(name = "quantity")
     private Integer quantity;

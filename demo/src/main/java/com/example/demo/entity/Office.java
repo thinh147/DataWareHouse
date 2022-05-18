@@ -13,7 +13,6 @@ import java.util.List;
 @Data
 public class Office {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cityId;
 
     @Column(name = "city_name")
@@ -28,10 +27,4 @@ public class Office {
     @Column(name = "creared_date")
     @CreatedDate
     private Instant createdDate;
-
-    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
-    List<Customer> customers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "office", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<Store> stores = new ArrayList<>();
 }

@@ -12,16 +12,11 @@ import java.util.List;
 @Data
 public class Orders {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
     @Column(name = "date_order")
     private Instant dateOrder;
 
-    @ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<OrderItem> orderItems = new ArrayList<>();
+    @Column(name = "customer_id")
+    private Long customerId;
 }

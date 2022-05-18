@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
 
     @Column(name = "customer_name")
@@ -29,10 +28,6 @@ public class Customer {
     @Column(name = "tour_guide")
     private String tourGuide;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<Orders> ordersList;
-
-    @ManyToOne(targetEntity = Office.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id")
-    private Office office;
+    @Column(name = "city_id")
+    private Long officeId;
 }
